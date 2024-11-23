@@ -6,27 +6,35 @@ export default function useProducts(numOfProds) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let fetch = true;
+    let isfetch = true;
+    setLoading(true);
     fetch(`https://fakestoreapi.com/products?limit=${numOfProds}`, {
       mode: "cors",
     })
       .then((res) => {
-        if (res.status != 200 || !fetch)
-          throw new Error("oops! an error has occured");
+        if (res.status !== 200 || !isfetch) {
+          throw new Error("oops! an error has occurred");
+        }
         return res.json();
       })
       .then((data) => {
-        setProducts(data);
-        setError(null);
+        if (isfetch) {
+          setProducts(data);
+          setError(null);
+        }
       })
       .catch((err) => {
-        setError(err);
-        setProducts(null);
+        if (isfetch) {
+          setError(err);
+          setProducts(null);
+        }
       })
-      .finally(setLoading(false));
+      .finally(() => {
+        if (isfetch) setLoading(false);
+      });
 
-    return () => (fetch = false);
-  }, []);
+    return () => (isfetch = false);
+  }, [numOfProds]);
 
   return { products, error, loading };
 }
