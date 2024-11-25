@@ -8,8 +8,12 @@ import styles from "./Home.module.css";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import img from "../assets/eStore.jpg";
+import useProducts from "./useProducts";
+import { LoaderCircle } from "lucide-react";
+import ShopCard from "./ShopCard";
 
 export default function Home() {
+  const { products, error, loading } = useProducts("5");
   return (
     <div>
       <div>
@@ -36,15 +40,27 @@ export default function Home() {
           modules={[Autoplay, Pagination, Navigation]}
           className={styles.Swiper}
         >
-          <SwiperSlide className={styles.swiper_slide}>Slide 1</SwiperSlide>
-          <SwiperSlide className={styles.swiper_slide}>Slide 2</SwiperSlide>
-          <SwiperSlide className={styles.swiper_slide}>Slide 3</SwiperSlide>
-          <SwiperSlide className={styles.swiper_slide}>Slide 4</SwiperSlide>
-          <SwiperSlide className={styles.swiper_slide}>Slide 5</SwiperSlide>
-          <SwiperSlide className={styles.swiper_slide}>Slide 6</SwiperSlide>
-          <SwiperSlide className={styles.swiper_slide}>Slide 7</SwiperSlide>
-          <SwiperSlide className={styles.swiper_slide}>Slide 8</SwiperSlide>
-          <SwiperSlide className={styles.swiper_slide}>Slide 9</SwiperSlide>
+          {loading ? (
+            <LoaderCircle color="red" />
+          ) : (
+            <>
+              {products.map((prod) => {
+                return (
+                  <SwiperSlide
+                    className={styles.swiper_slide}
+                    key={prod.id}
+                    style={{ width: "200px" }}
+                  >
+                    <div style={{ width: "200px" }}>
+                      <img src={prod.image} alt="" />
+                      <h2>{prod.title}</h2>
+                      <p>{prod.price}</p>
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
+            </>
+          )}
         </Swiper>
       </div>
     </div>

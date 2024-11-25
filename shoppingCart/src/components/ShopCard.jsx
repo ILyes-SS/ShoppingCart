@@ -61,7 +61,12 @@ export default function ShopCard({ title, image, price, cart, setCart }) {
         <div>
           <div>
             <button onClick={() => decrementQuantity()}>-</button>
-            <input type="text" onChange={changeHandler} value={value} />
+            <input
+              type="number"
+              min={1}
+              onChange={changeHandler}
+              value={value}
+            />
             <button onClick={() => incrementQuantity()}>+</button>
           </div>
           <button onClick={() => submitHandler()}>Submit quantity</button>
