@@ -1,5 +1,5 @@
 import { useState } from "react";
-export default function ShopCard({ title, image, price, cart, setCart }) {
+export default function ShopCard({ title, image, price, cart, id, setCart }) {
   const [value, setValue] = useState(0);
 
   let isAdded = false;
@@ -21,10 +21,9 @@ export default function ShopCard({ title, image, price, cart, setCart }) {
       )
     );
   }
-  // console.table(cart);
   function addToCart() {
     setValue(1);
-    setCart((prev) => [...prev, { title, image, price, quantity: 1 }]);
+    setCart((prev) => [...prev, { title, image, price, id, quantity: 1 }]);
   }
   function decrementQuantity() {
     let index = cart.findIndex((obj) => obj.title == title);
@@ -65,7 +64,10 @@ export default function ShopCard({ title, image, price, cart, setCart }) {
               type="number"
               min={1}
               onChange={changeHandler}
-              value={value}
+              value={
+                value ||
+                cart[cart.findIndex((obj) => obj.title == title)].quantity
+              }
             />
             <button onClick={() => incrementQuantity()}>+</button>
           </div>
