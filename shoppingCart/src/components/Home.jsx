@@ -10,10 +10,9 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import img from "../assets/eStore.jpg";
 import useProducts from "./useProducts";
 import { LoaderCircle } from "lucide-react";
-import ShopCard from "./ShopCard";
 
 export default function Home() {
-  const { products, error, loading } = useProducts("5");
+  const { products, loading } = useProducts("5");
   return (
     <div>
       <div>

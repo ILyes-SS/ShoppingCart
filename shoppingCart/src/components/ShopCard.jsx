@@ -1,5 +1,21 @@
 import { useState } from "react";
-export default function ShopCard({ title, image, price, cart, id, setCart }) {
+import styled from "styled-components";
+import PropTypes from "prop-types";
+
+const StyledBtn = styled.button`
+  background-color: blue;
+  color: white;
+  padding: 9px 14px;
+  border: none;
+  border-radius: 8px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: white;
+    color: blue;
+  }
+`;
+function ShopCard({ title, image, price, cart, id, setCart }) {
   const [value, setValue] = useState(0);
 
   let isAdded = false;
@@ -59,7 +75,7 @@ export default function ShopCard({ title, image, price, cart, id, setCart }) {
       {isAdded ? (
         <div>
           <div>
-            <button onClick={() => decrementQuantity()}>-</button>
+            <StyledBtn onClick={() => decrementQuantity()}>-</StyledBtn>
             <input
               type="number"
               min={1}
@@ -69,13 +85,30 @@ export default function ShopCard({ title, image, price, cart, id, setCart }) {
                 cart[cart.findIndex((obj) => obj.title == title)].quantity
               }
             />
-            <button onClick={() => incrementQuantity()}>+</button>
+            <StyledBtn onClick={() => incrementQuantity()}>+</StyledBtn>
           </div>
-          <button onClick={() => submitHandler()}>Submit quantity</button>
+          <StyledBtn onClick={() => submitHandler()}>Submit quantity</StyledBtn>
         </div>
       ) : (
-        <button onClick={() => addToCart()}>Add to Cart</button>
+        <StyledBtn onClick={() => addToCart()}>Add to Cart</StyledBtn>
       )}
     </div>
   );
 }
+ShopCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  cart: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  id: PropTypes.number.isRequired,
+  setCart: PropTypes.func.isRequired,
+};
+export default ShopCard;
