@@ -7,8 +7,8 @@ import "swiper/css/navigation";
 import styles from "./Home.module.css";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import img from "../assets/eStore.jpg";
-import useProducts from "./useProducts";
+import img from "../../assets/eStore.jpg";
+import useProducts from "../useProducts";
 import { LoaderCircle } from "lucide-react";
 
 export default function Home() {
@@ -42,7 +42,7 @@ export default function Home() {
           className={styles.swiper}
         >
           {loading ? (
-            <LoaderCircle color="blue" />
+            <LoaderCircle color="blue" className={styles.loading}/>
           ) : (
             <>
               {products.map((prod) => {

@@ -1,18 +1,19 @@
 import { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import styles from "./ShopCard.module.css"
 
 const StyledBtn = styled.button`
-  background-color: blue;
+  background-color: rgb(9, 47, 104);
   color: white;
   padding: 9px 14px;
-  border: none;
+  border: 1px solid rgb(9, 47, 104);
   border-radius: 8px;
 
   &:hover {
     cursor: pointer;
     background-color: white;
-    color: blue;
+    color: rgb(9, 47, 104);
   }
 `;
 function ShopCard({ title, image, price, cart, id, setCart }) {
@@ -68,17 +69,18 @@ function ShopCard({ title, image, price, cart, id, setCart }) {
     );
   }
   return (
-    <div className="card" style={{ width: "200px" }}>
-      <img src={image} alt={title} style={{ width: "200px" }} />
+    <div className={styles.card} style={{ width: "200px" }}>
+      <img src={image} alt={title} className={styles.image}/>
       <h2>{title}</h2>
-      <p>{price}</p>
+      <p style={{ marginTop: "-10px" }}>{price}$</p>
       {isAdded ? (
-        <div>
-          <div>
+        <div className={styles.allBtnsContainer}>
+          <div className={styles.btnsContainer} >
             <StyledBtn onClick={() => decrementQuantity()}>-</StyledBtn>
             <input
-              type="number"
+              style={{ textAlign: "center", width: "50px" }}
               min={1}
+              type="number"
               onChange={changeHandler}
               value={
                 value ||
@@ -90,7 +92,7 @@ function ShopCard({ title, image, price, cart, id, setCart }) {
           <StyledBtn onClick={() => submitHandler()}>Submit quantity</StyledBtn>
         </div>
       ) : (
-        <StyledBtn onClick={() => addToCart()}>Add to Cart</StyledBtn>
+        <StyledBtn style={{ marginTop: "auto" }} onClick={() => addToCart()}>Add to Cart</StyledBtn>
       )}
     </div>
   );

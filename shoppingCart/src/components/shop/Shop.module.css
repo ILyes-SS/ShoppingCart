@@ -1,0 +1,26 @@
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    justify-items: center;
+    gap: 20px;
+    padding: 20px 10px;
+}
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80dvh;
+}
+.loading > *{
+    animation: spin infinite 400ms ease;
+}
+@keyframes spin {
+    from{
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+
+    }
+    
+}

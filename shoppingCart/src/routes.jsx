@@ -1,7 +1,7 @@
 import App from "./App";
-import Cart from "./components/Cart";
-import Home from "./components/Home";
-import Shop from "./components/Shop";
+import Cart from "./components/cart/Cart";
+import Home from "./components/home/Home";
+import Shop from "./components/shop/Shop";
 import ErrorPage from "./ErrorPage";
 
 export const routes = [

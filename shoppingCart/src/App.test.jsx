@@ -1,8 +1,8 @@
 import {describe, it, expect} from "vitest";
 import { render, screen } from '@testing-library/react';
 import userEvent from "@testing-library/user-event";
-import Home from "./components/Home";
-import Shop from "./components/Shop";
+import Home from "./components/home/Home";
+import Shop from "./components/shop/Shop";
 import "@testing-library/jest-dom"; // Import matchers
 
 import App from "./App";

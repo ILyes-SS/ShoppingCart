@@ -59,6 +59,19 @@ min-width: 250px;
   border-radius: 10px;
   cursor: pointer;
 }
+.loading{
+  animation: spin infinite 400ms ease;
+}
+@keyframes spin {
+  from{
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+
+  }
+  
+}
 @media (max-width:500px) {
   .hero{
     flex-direction: column;
