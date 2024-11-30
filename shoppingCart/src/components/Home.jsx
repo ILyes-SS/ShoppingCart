@@ -12,19 +12,21 @@ import useProducts from "./useProducts";
 import { LoaderCircle } from "lucide-react";
 
 export default function Home() {
-  const { products, loading } = useProducts("5");
+  const { products, loading } = useProducts("4");
   return (
     <div>
-      <div>
-        <h1>Welcome To Hanoti!</h1>
-        <p>Click the link down below to start your shopping</p>
-        <Link to={"shop"}>
+      <div className={styles.hero}>
+      <div className={styles.hero_text}>
+        <h1> Welcome To Hanoti!</h1>
+        <p>Click the link down below to <br /> start your shopping</p>
+        <Link to={"shop"} className={styles.link}>
           shop <ArrowRight />
         </Link>
       </div>
-      <img src={img} alt="e store" style={{ width: "200px" }} />
-      <div>
-        <h1>Best sellers</h1>
+      <img src={img} alt="e store" className={styles.img} />
+      </div>
+      <div className={styles.slider_section}>
+        <h1 className={styles.best}>Best sellers</h1>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -37,10 +39,10 @@ export default function Home() {
           }}
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
-          className={styles.Swiper}
+          className={styles.swiper}
         >
           {loading ? (
-            <LoaderCircle color="red" />
+            <LoaderCircle color="blue" />
           ) : (
             <>
               {products.map((prod) => {
@@ -48,12 +50,10 @@ export default function Home() {
                   <SwiperSlide
                     className={styles.swiper_slide}
                     key={prod.id}
-                    style={{ width: "200px" }}
                   >
-                    <div style={{ width: "200px" }}>
+                    <div>
                       <img src={prod.image} alt="" />
-                      <h2>{prod.title}</h2>
-                      <p>{prod.price}</p>
+                      <p style={{marginBottom: "30px" }}>{prod.price}$</p>
                     </div>
                   </SwiperSlide>
                 );

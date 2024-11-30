@@ -11,17 +11,17 @@ export default function Shop() {
   if (loading)
     return (
       <div>
-        <LoaderCircle color="red" />
+        <LoaderCircle color="blue" />
       </div>
     );
   if (products)
-    return (
-      <>
+    return ( 
+      <div>
         {products.map((prod) => {
           return (
             <ShopCard {...prod} key={prod.id} cart={cart} setCart={setCart} />
           );
         })}
-      </>
+      </div>
     );
 }

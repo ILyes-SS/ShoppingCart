@@ -14,7 +14,7 @@ function App() {
           <Link to={"/shop"}>Shop</Link>
           <Link to={"/cart"}>
             {" "}
-            <ShoppingCart color="white" />
+            <ShoppingCart color="white" height={"18px"} />
             {cart.length}
           </Link>
         </nav>

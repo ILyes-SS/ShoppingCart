@@ -8,10 +8,35 @@ body {
 }
 
 body {
-  background: #eee;
+  background: white;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #000;
   margin: 0;
   padding: 0;
 }
+header, footer{
+  display: flex;
+  align-items: center;
+  background-color: rgb(17, 67, 141);
+  color: white;
+  padding: 8px 20px;
+}
+header nav{
+  margin-left: auto;
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+}
+nav > * {
+  color: white;
+text-decoration: none;
+}
+nav > *:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+footer{
+  justify-content: center;
+}
+

@@ -10,10 +10,10 @@ export default function Cart() {
   return (
     <>
       <h1>Your Cart</h1>
-      {cart.map((prod) => {
+     {cart.length >= 1 ? cart.map((prod) => {
         return (
           <div key={prod.id}>
-            <img src={prod.image} alt="" />
+            <img src={prod.image} alt="" width={"200px"} />
             <h3>
               {prod.title} x{prod.quantity}
             </h3>
@@ -23,7 +23,7 @@ export default function Cart() {
             </button>
           </div>
         );
-      })}
+      }) : <p>Your cart is empty</p> }
     </>
   );
 }
