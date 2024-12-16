@@ -1,0 +1,29 @@
+.container{
+    height: 80dvh;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+.item{
+    display: flex;
+    border-bottom: 1px solid rgb(198, 191, 191);
+    gap: 15px;
+    padding-block: 10px;
+    align-items: center;
+}
+.item > h3{
+    font-size: 15px;
+}
+.item > p{
+    color: rgb(21, 21, 156);
+    margin-left: auto;
+}
+.item > button{
+    background: transparent;
+    cursor: pointer;
+    border: none;
+}
+.item > h3 > span{
+    color: rgb(21, 21, 156);
+    margin-left: 5px;
+}
